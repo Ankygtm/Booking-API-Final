@@ -6,7 +6,7 @@
 </head>
 <body>
     @include('header')
-    @include('navbar')
+    
     <div style="overflow-x:auto;">
     <table class="items">
         <caption><h2 class="item_head">Make Bookings</h2></caption>

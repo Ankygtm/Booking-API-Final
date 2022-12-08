@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/registration',[Registration_UI_Controller::class,'index']);
 Route::post('/registration',[Registration_UI_Controller::class,'register']);
 Route::group(['middleware'=>"session"],function(){
-  
+    Route::get('/', function () {
+        return view('welcome');
+    });
     // Route::get('/items',[Item_display_controller::class,'index']);
     
  Route::get('/items',[Item_display_controller::class,'index']);
@@ -34,7 +36,6 @@ Route::group(['middleware'=>"session"],function(){
     });
     Route::get('book/{id}',[Booking_controller::class,'show_booking']);
     Route::post('bookconfirm',[Booking_controller::class,'make_booking']);
-    Route::get('mybooking/{id}',[Booking_controller::class,'personal_booking']);
     Route::get("/logout", function () {
         if(session()->has('name'))
         {
