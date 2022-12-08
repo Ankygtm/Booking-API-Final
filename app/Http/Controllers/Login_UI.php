@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class Login_UI extends Controller
 {
@@ -16,20 +17,27 @@ class Login_UI extends Controller
             'password'=>'required'
         ]); 
        
-        $data=array(
-            // 'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>$request->password
-        );
-        if(Auth::attempt($data))
+        // $data=array(
+        //     // 'name'=>$request->name,
+        //     'email'=>$request->email,
+        //     'password'=>$request->password
+        // );
+        $response= Http::withHeaders(['Authorization'=>'Bearer 2|XgTEJdrnVdg4T51TInPbmHNZtHrRPmsH0gQiC7WF'])
+        ->post('http://127.0.0.1:8000/api/login',[
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "password"=>$request->password
+        ]);
+        // if(Auth::attempt($data))
+        if($response['status']=="Verified")
         {
-         
             
-            $id=User::where('email',$request->email)->pluck('id');
-            $name=User::where('email',$request->email)->pluck('name');
-            $request->session()->put('name',$name[0]);
-            $request->session()->put('id',$id[0]);
-           
+                 $user=$response['user'];
+                $request->session()->put('name',$user['name']);
+                $request->session()->put('id',$user['id']);
+              
+            
+      
             return redirect('home');
         }
         else
