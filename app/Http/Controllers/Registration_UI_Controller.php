@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class Registration_UI_Controller extends Controller
 {
@@ -19,18 +20,21 @@ class Registration_UI_Controller extends Controller
             'email'=>'required|email|unique:users',
             'password'=>'required|min:6|confirmed'
         ]); 
-        $user=new User();
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->password=Hash::make($request->password);
-        $result=$user->save();
-        if($result)
-        {
+       
+        $response= Http::withHeaders(['Authorization'=>'Bearer 2|XgTEJdrnVdg4T51TInPbmHNZtHrRPmsH0gQiC7WF'])
+        ->post('http://127.0.0.1:8000/api/register',[
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "password"=>$request->password
+        ]);
+       if($response['Result']=="Registration Successful")
+       {
         return redirect('login');
+       }
+       else
+       {
+        return view('register',['register' => "Registration Unsuccessful"]);
+       }
+       
         }
-        else
-        {
-            return view('register',['register' => "Registration Unsuccessful"]);
-        }
-    }
 }

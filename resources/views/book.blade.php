@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    
    <h2 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width:100%;padding:15px; background-color: #086b4788;" >Confirm Reservation</h2>
     <table class="confirm_booking">
         @foreach ($data as $item)
