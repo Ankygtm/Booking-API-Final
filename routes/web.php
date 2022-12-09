@@ -29,7 +29,7 @@ Route::group(['middleware'=>"session"],function(){
         return view('login');
     });
     Route::post("/login",[Login_UI::class,'index']);
-    Route::get("/home", function () {
+    Route::get("/", function () {
         return view('home');
     });
     Route::get('book/{id}',[Booking_controller::class,'show_booking']);

@@ -35,10 +35,7 @@ class Login_UI extends Controller
                  $user=$response['user'];
                 $request->session()->put('name',$user['name']);
                 $request->session()->put('id',$user['id']);
-              
-            
-      
-            return redirect('home');
+              return redirect('/');
         }
         else
         {
