@@ -7,6 +7,6 @@
     
     @if(session()->has('name') )
         <h3 class="name">Welcome,{{ session()->get('name') }}</h3>
-        {{-- {{ session()->get('id') }} --}}
+ 
         @endif
 </ul>
