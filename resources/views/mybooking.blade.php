@@ -41,7 +41,7 @@
     <?php $i++; ?>
        @endforeach
     </table>
-    <a href="{{ url('/home') }}"><button style="width:100%;">Back</button></a>
+    <a href="{{ url('/') }}"><button style="width:100%;">Back</button></a>
 
 </body>
 </html>

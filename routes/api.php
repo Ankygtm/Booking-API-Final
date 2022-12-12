@@ -22,10 +22,3 @@ use App\Http\Controllers\UserRegistration;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-// Route::group(['middleware' => 'auth:sanctum'], function(){
-//     Route::get('/booking/{id?}',[Booking_api::class,'index']);
-//     Route::get('/item/{id?}',[Item_api::class,'index']);
-//     Route::post('/addbooking',[Post_booking_api::class,'index']);
-//     });
-// Route::post('/login',[UserLogin::class,'index']);
-// Route::post('/register',[UserRegistration::class,'index']);
