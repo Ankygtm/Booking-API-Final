@@ -39,6 +39,6 @@ class Booking_controller extends Controller
         array_push($items,$item);
        }
        return view('mybooking',['items'=>$items,'b_dates'=>$B_dates]);
-// return $response;
+        return $response;
     }
 }

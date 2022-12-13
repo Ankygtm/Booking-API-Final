@@ -16,9 +16,7 @@
            @endif
         <form action="login" method="POST" enctype="multipart/form-data">
             @csrf
-            {{-- <label>Name</label><br />
-            <input type="text" placeholder="Name" name="name" value="{{ old('name') }}"/><br />
-            <span>@error('name')*{{ $message }}@enderror</span><br /> --}}
+        
 
             <label>E-mail</label><br />
             

@@ -12,16 +12,12 @@ class Login_UI extends Controller
     public function index(Request $request)
     {
          $request->validate([
-            // 'name'=>'required',
+            
             'email'=>'required|email',
             'password'=>'required'
         ]); 
        
-        // $data=array(
-        //     // 'name'=>$request->name,
-        //     'email'=>$request->email,
-        //     'password'=>$request->password
-        // );
+      
         $response= Http::withHeaders(['Authorization'=>'Bearer 2|XgTEJdrnVdg4T51TInPbmHNZtHrRPmsH0gQiC7WF'])
         ->post('http://127.0.0.1:8000/api/login',[
             "name"=>$request->name,
