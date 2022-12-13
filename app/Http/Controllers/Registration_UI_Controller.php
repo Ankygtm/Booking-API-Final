@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Support\Facades\Http;
 
 class Registration_UI_Controller extends Controller
